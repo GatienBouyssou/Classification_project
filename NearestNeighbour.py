@@ -31,6 +31,7 @@ def getNextPoint(currentPoint):
 if __name__ == '__main__':
     currentPoint = (0,0)
     currentDistanceDone = 0
+    totalSize = 0
     resultArray = []
 
     while currentDistanceDone < 10000:
@@ -38,10 +39,9 @@ if __name__ == '__main__':
         currentDistanceDone += euclideanDistance(currentPoint, nextPoint)
         resultArray.append(nextPoint[0])
         currentPoint = (nextPoint[1], nextPoint[2])
-        print("res for this round")
-        print(currentPoint)
+        totalSize += nextPoint[3]
         print(currentDistanceDone)
-        print(nextPoint[0])
+    print(totalSize)
     resultArray.pop()
 
     with open('result.csv', 'w+') as csvfile:
