@@ -50,23 +50,25 @@ if __name__ == '__main__':
     print("Clustering Done.")
 
     arrayResults = []
-    for i in range(0, 11):
+    for i in range(0, 1):
         data = data_bank.copy()
-        weights = [i*0.1, 1]
+        weights = [1, 0]
         print("----------------")
         print("Now working on the epoch " + str(i))
         print("----------------")
         currentPoint = [0, 0]
         currentDistanceDone = 0
         totalSize = 0
-        # resultArray = []
+        resultArray = []
         while currentDistanceDone < 10000:
             nextPoint = getNextPoint(currentPoint, kmeans)
             currentDistanceDone += euclideanDistance(currentPoint, nextPoint)
-            # resultArray.append(nextPoint[0])
+            resultArray.append(nextPoint[0])
             currentPoint = (nextPoint[1], nextPoint[2])
             totalSize += nextPoint[3]
+            print(currentDistanceDone)
         print(totalSize)
+        print(resultArray)
         arrayResults.append([weights, totalSize])
         # resultArray.pop()
     print(arrayResults)

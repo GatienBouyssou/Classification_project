@@ -11,7 +11,7 @@ def euclideanDistance(currentPoint, line):
 
 # euclidean dist without sqrt + size * 0.1
 def distance(currentPoint, line):
-    return (pow(currentPoint[0] - line[1], 2) + pow(currentPoint[1] - line[2], 2)) + line[3]/10
+    return pow(currentPoint[0] - line[1], 2) + pow(currentPoint[1] - line[2], 2)
 
 
 def getNextPoint(currentPoint):
@@ -29,12 +29,13 @@ def getNextPoint(currentPoint):
 
 
 if __name__ == '__main__':
+
     currentPoint = (0,0)
     currentDistanceDone = 0
     totalSize = 0
     resultArray = []
 
-    while currentDistanceDone < 10000:
+    while currentDistanceDone < 1000:
         nextPoint = getNextPoint(currentPoint)
         currentDistanceDone += euclideanDistance(currentPoint, nextPoint)
         resultArray.append(nextPoint[0])
@@ -43,9 +44,10 @@ if __name__ == '__main__':
         print(currentDistanceDone)
     print(totalSize)
     resultArray.pop()
+    print(resultArray)
 
-    with open('result.csv', 'w+') as csvfile:
-        writer = csv.writer(csvfile, delimiter=' ',
-                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        for cellId in resultArray:
-            writer.writerow([str(int(cellId))])
+    # with open('result.csv', 'w+') as csvfile:
+    #     writer = csv.writer(csvfile, delimiter=' ',
+    #                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    #     for cellId in resultArray:
+    #         writer.writerow([str(int(cellId))])
